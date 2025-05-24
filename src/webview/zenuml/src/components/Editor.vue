@@ -1,6 +1,8 @@
 <template>
   <div class="editor-container">
-    <div ref="editorElement" class="editor-content"></div>
+    <div ref="editorElement" class="editor-content">
+      <BuildTimestamp class="editor-timestamp" />
+    </div>
   </div>
 </template>
 
@@ -10,6 +12,7 @@ import {baseExtensionsFactory, zenumlExtensions} from "./extensions";
 import {EditorView} from '@codemirror/view'
 import {Compartment, EditorState} from '@codemirror/state'
 import {useHostCommunication} from '../composables/useHostCommunication'
+import BuildTimestamp from './BuildTimestamp.vue'
 
 const props = defineProps({
   initialContent: {
@@ -97,6 +100,25 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editor-content {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.editor-timestamp {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
 /* Styles are in main.css */
 :deep(.cm-editor) {
   min-height: 200px;
