@@ -126,4 +126,10 @@ onMounted(async () => {
   height: 100%;
   min-height: 300px;
 }
+
+:deep(.footer button:first-child),
+:deep(.footer button:nth-child(2)) {
+  display: none;
+}
 </style>
+
